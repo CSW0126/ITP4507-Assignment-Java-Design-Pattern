@@ -1,8 +1,7 @@
-import ict.*;
+import ict.ControlMenu;
+
 public class Client {
     public static void main(String[] args) {
-
         new ControlMenu().run();
     }
-
 }

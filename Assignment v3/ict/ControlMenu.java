@@ -153,7 +153,6 @@ public class ControlMenu {
         careTaker.setOrdersMemento(new OrdersMemento(orders));
     }
 
-    
 
     private void printCommandMenu() {
         tagLib.println("t001");

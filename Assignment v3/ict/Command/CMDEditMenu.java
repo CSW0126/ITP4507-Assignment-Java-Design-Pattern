@@ -19,6 +19,7 @@ public class CMDEditMenu implements Command {
 	public void execute() {
 		// actions
 		printConsoleMenu();
+		
 
 		// end command message
 		controlMenu.getTagLib().println("t105");
