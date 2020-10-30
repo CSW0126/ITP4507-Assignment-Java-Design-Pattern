@@ -8,14 +8,14 @@ public class Tag_Eng implements TagLib {
 
     public Tag_Eng() {
         msgs = new HashMap<String, String>();
-        //create map
+        // create map
         createMapMessage();
     }
 
     private void createMapMessage() {
-        //err
+        // err
         msgs.put("tErr01", "No this ID");
-        msgs.put("tErr02", "No this command! Please try again!");
+        msgs.put("tErr02", "No this command! Please try again! \n");
         msgs.put("tErr03", "No this Type of Drink!");
         msgs.put("tErr04", "Style Not Set");
         msgs.put("tErr05", "No Description set");
@@ -23,8 +23,11 @@ public class Tag_Eng implements TagLib {
         msgs.put("tErr07", "No this Type");
         msgs.put("tErr08", "Please enter Integer Number! \n");
         msgs.put("tErr09", "Can Not Less than 0! \n");
-        msgs.put("tErr10", "Can Not be Empty, try again! ");
+        msgs.put("tErr10", "Can Not be Empty, try again! \n");
         msgs.put("tErr11", "Invalid input! ");
+        msgs.put("tErr12", "No Order! \n");
+        msgs.put("tErr13", "This staff have order alreadly!");
+        msgs.put("tErr14", "His/Her Order Details : ");
         // menu
         msgs.put("t001", "Please enter command: [ e | s | p | c | l | d | q]");
         msgs.put("t002",
@@ -62,7 +65,7 @@ public class Tag_Eng implements TagLib {
         msgs.put("t313", "French fries");
 
         // list order
-        msgs.put("t401", "Outstanding Orders ");
+        msgs.put("t401", "\nOutstanding Orders ");
         msgs.put("t402", "C: ");
         msgs.put("t403", "W: ");
         msgs.put("t404", " : ");
@@ -75,15 +78,16 @@ public class Tag_Eng implements TagLib {
         msgs.put("t502", "Staff Number: ");
         msgs.put("t503", "Order Cancelled");
         // order is Done
-        msgs.put("t601", "Complete Order");
-        msgs.put("t602", "Order marked as done");
+        msgs.put("t601", "\nComplete Order");
+        msgs.put("t602", "Order marked as done \n");
+        msgs.put("t603", "No Orders! \n");
         // drink type
         msgs.put("t701", "Hot ");
         msgs.put("t702", "Cold ");
         msgs.put("t703", "Tea ");
         msgs.put("t704", "Coffee ");
         msgs.put("t705", "Oolong Tea ");
-        //type
+        // type
         msgs.put("t801", "Drink");
         msgs.put("t802", "Main Dish");
         msgs.put("t803", "Side Dish");

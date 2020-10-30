@@ -16,18 +16,23 @@ public abstract class AbstractFoodMenu {
         this.count = count;
     }
 
-    public void addCount(){
-        count ++;
+    public void addCount() {
+        count++;
     }
 
-    public void subtractCount(){
-        count --;
-        if(count < 0){
+    public void subtractCount() {
+        count--;
+        if (count < 0) {
             count = 0;
         }
     }
 
-    //Getter Setter
+    // abstract Method
+    // public abstract IMemento save();
+    // public abstract void restore(IMemento memento);
+    public abstract String toString();
+
+    // Getter Setter//
     public ControlMenu getControlMenu() {
         return controlMenu;
     }
@@ -55,14 +60,6 @@ public abstract class AbstractFoodMenu {
     public void setCount(int count) {
         this.count = count;
     }
-
-    //abstract Method
-    // public abstract IMemento save();
-    // public abstract void restore(IMemento memento);
-    public abstract String toString();
-
-    
-
-    
+    // Getter Setter//
 
 }

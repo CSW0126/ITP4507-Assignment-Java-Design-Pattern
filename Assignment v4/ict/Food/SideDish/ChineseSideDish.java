@@ -1,6 +1,6 @@
 package ict.Food.SideDish;
 
-public class ChineseSideDish implements ISideDish{
+public class ChineseSideDish implements ISideDish {
     private String sideDishName;
 
     public ChineseSideDish(String sideDishName) {
@@ -11,6 +11,5 @@ public class ChineseSideDish implements ISideDish{
     public String getSideDishName() {
         return sideDishName;
     }
-    
-    
+
 }

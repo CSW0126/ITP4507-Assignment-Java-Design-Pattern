@@ -1,11 +1,19 @@
 package ict.Command;
 
-public class CMDQuit implements ICommand{
+import ict.ControlMenu;
+import ict.TagLib.TagLib;
+
+public class CMDQuit implements ICommand {
+    private TagLib tagLib;
+
+    public CMDQuit(ControlMenu controlMenu) {
+        tagLib = controlMenu.getTagLib();
+    }
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-
+        tagLib.println("t003");
+        System.exit(0);
     }
-    
+
 }
