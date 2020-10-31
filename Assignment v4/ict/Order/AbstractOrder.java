@@ -1,10 +1,13 @@
 package ict.Order;
 
+import java.util.Map;
+
 import ict.ControlMenu;
 import ict.Food.Drink.IDrink;
 import ict.Food.MainDish.IMainDish;
 import ict.Food.SideDish.ISideDish;
 import ict.FoodMenu.AbstractFoodMenu;
+import ict.Memento.IMemento;
 
 public abstract class AbstractOrder {
     private ControlMenu controlMenu;
@@ -72,5 +75,7 @@ public abstract class AbstractOrder {
     public abstract IMainDish getMainDish();
     public abstract AbstractFoodMenu getMenu();
     public abstract void setMenu(AbstractFoodMenu menu);
+    public abstract IMemento<AbstractOrder> save();
+    public abstract void restore(Map<Integer, IMemento<AbstractOrder>> orderMementoMap);
 
 }

@@ -3,6 +3,7 @@ package ict.Command;
 import java.util.Queue;
 import java.util.Scanner;
 
+import ict.CareTaker;
 import ict.ControlMenu;
 import ict.Factory.AbstractLunchSetFactory;
 import ict.Factory.ChineseSetFactory;
@@ -20,6 +21,7 @@ public class CMDPlaceOrder implements ICommand {
     private AbstractFoodMenu chineseMenu;
     private AbstractFoodMenu westernMenu;
     private Queue<AbstractOrder> orders;
+    private CareTaker careTaker;
 
     public CMDPlaceOrder(ControlMenu controlMenu) {
         this.tagLib = controlMenu.getTagLib();
@@ -32,6 +34,8 @@ public class CMDPlaceOrder implements ICommand {
         westernMenu = controlMenu.getWesternMenu();
         // orders
         orders = controlMenu.getOrders();
+        //caretaker
+        careTaker = controlMenu.getCareTaker();
     }
 
     @Override
@@ -40,6 +44,12 @@ public class CMDPlaceOrder implements ICommand {
     }
 
     private void printOptions() {
+
+        if(!isAvaliableMenu(chineseMenu) && !isAvaliableMenu(westernMenu)){
+            tagLib.println("tErr18");
+            return;
+        }
+
         String input = "";
 
         // print header
@@ -76,6 +86,10 @@ public class CMDPlaceOrder implements ICommand {
         }
     }
 
+    private boolean isAvaliableMenu(AbstractFoodMenu menu){
+        return menu.getCount() > 0;
+    }
+
     private void makeOrder(AbstractLunchSetFactory factory) {
         AbstractOrder order;
         order = createOrderFromInput(factory);
@@ -83,6 +97,8 @@ public class CMDPlaceOrder implements ICommand {
         orders.add(order);
         // count -1
         order.getMenu().subtractCount();
+
+        careTaker.addOrderMemento(order.save());
     }
 
     private boolean isMenuAvailable(AbstractFoodMenu menu) {

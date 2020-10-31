@@ -28,6 +28,10 @@ public class Tag_Eng implements TagLib {
         msgs.put("tErr12", "No Order! \n");
         msgs.put("tErr13", "This staff have order alreadly!");
         msgs.put("tErr14", "His/Her Order Details : ");
+        msgs.put("tErr15", "No Memento for orders");
+        msgs.put("tErr16", "No orders can cancel! \n");
+        msgs.put("tErr17", "This staffNo has no order! ");
+        msgs.put("tErr18", "No Menu is avaliable! \n");
         // menu
         msgs.put("t001", "Please enter command: [ e | s | p | c | l | d | q]");
         msgs.put("t002",
@@ -74,13 +78,14 @@ public class Tag_Eng implements TagLib {
         msgs.put("t407", "Chinese Soup, ");
         msgs.put("t408", "Western Soup, ");
         // cancel order
-        msgs.put("t501", "Cancel Order");
+        msgs.put("t501", "\nCancel Order");
         msgs.put("t502", "Staff Number: ");
-        msgs.put("t503", "Order Cancelled");
+        msgs.put("t503", "Order Cancelled \n");
         // order is Done
         msgs.put("t601", "\nComplete Order");
         msgs.put("t602", "Order marked as done \n");
         msgs.put("t603", "No Orders! \n");
+        msgs.put("t604", "Order Done List :");
         // drink type
         msgs.put("t701", "Hot ");
         msgs.put("t702", "Cold ");

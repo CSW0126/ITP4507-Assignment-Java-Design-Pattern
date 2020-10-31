@@ -46,7 +46,7 @@ public class CMDEditMenu implements ICommand {
 
             // type "c" or "w"
             if (input.equals("c")) {
-                editMenuFromInput(chineseSetFactory,chineseMenu);
+                editMenuFromInput(chineseSetFactory, chineseMenu);
                 break;
             } else if (input.equals("w")) {
                 editMenuFromInput(westernSetFactory, westernMenu);
@@ -61,11 +61,11 @@ public class CMDEditMenu implements ICommand {
         IMainDish mainDish;
         int price;
         int count;
-        //get input
+        // get input
         mainDish = factory.createMainDish(getMainDishInput());
         price = getPriceInput();
         count = getCountInput();
-        //set to menu
+        // set to menu
         menu.setMainDish(mainDish);
         menu.setPrice(price);
         menu.setCount(count);
@@ -115,24 +115,24 @@ public class CMDEditMenu implements ICommand {
         return price;
     }
 
-    private int getCountInput(){
+    private int getCountInput() {
         String input = "";
         int count = 0;
 
-        for(;;){
-            try{
-                //print header
+        for (;;) {
+            try {
+                // print header
                 taglib.println("t205");
                 input = sc.nextLine();
                 count = Integer.parseInt(input);
 
-                //check if 0
-                if(count > 0){
+                // check if 0
+                if (count > 0) {
                     break;
-                }else{
+                } else {
                     taglib.println("tErr09");
                 }
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 taglib.println("tErr08");
             }
         }

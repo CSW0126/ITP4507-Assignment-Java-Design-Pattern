@@ -11,6 +11,7 @@ public class CMDListOrder implements ICommand {
     private Queue<AbstractOrder> orders;
 
     public CMDListOrder(ControlMenu controlMenu) {
+        orders = controlMenu.getOrders();
         tagLib = controlMenu.getTagLib();
     }
 
@@ -18,7 +19,7 @@ public class CMDListOrder implements ICommand {
     public void execute() {
         if (!orders.isEmpty()) {
             for (AbstractOrder order : orders) {
-               System.out.println(order.toString() + "\n");
+                System.out.println(order.toString() + "\n");
             }
         } else {
             tagLib.println("tErr12");

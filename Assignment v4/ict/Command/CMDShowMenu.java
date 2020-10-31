@@ -15,6 +15,7 @@ public class CMDShowMenu implements ICommand {
 
     public CMDShowMenu(ControlMenu controlMenu) {
         menuList = new ArrayList<>();
+        tagLib = controlMenu.getTagLib();
         chineseMenu = controlMenu.getChineseMenu();
         westernMenu = controlMenu.getWesternMenu();
 
