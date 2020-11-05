@@ -32,7 +32,7 @@ public class WesternOrder extends AbstractOrder {
                 westernOrder.getStaffNo(), westernOrder.getLocationNo());
         ControlMenu controlMenu = westernOrder.getControlMenu();
         this.tagLib = controlMenu.getTagLib();
-        this.westernMenu = controlMenu.getChineseMenu();
+        this.westernMenu = controlMenu.getWesternMenu();
         this.mainDish = westernMenu.getMainDish();
         this.orders = controlMenu.getOrders();
     }
