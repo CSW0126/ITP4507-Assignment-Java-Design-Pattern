@@ -1,2 +1,2 @@
-java Client < TextData1.txt
+java Client < TestData1.txt
 pause
