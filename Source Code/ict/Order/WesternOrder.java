@@ -9,8 +9,6 @@ import ict.Food.Drink.IDrink;
 import ict.Food.MainDish.IMainDish;
 import ict.Food.SideDish.ISideDish;
 import ict.FoodMenu.AbstractFoodMenu;
-import ict.Memento.IMemento;
-import ict.Memento.OrderMemento;
 import ict.TagLib.TagLib;
 
 public class WesternOrder extends AbstractOrder {
@@ -68,23 +66,23 @@ public class WesternOrder extends AbstractOrder {
     }
 
     @Override
-    public IMemento<AbstractOrder> save() {
+    public OrderMemento save() {
         return new OrderMemento(new WesternOrder(this));
     }
 
     @Override
-    public void restore(Map<Integer, IMemento<AbstractOrder>> orderMementoMap) {
+    public void restore(Map<Integer, OrderMemento> orderMementoMap) {
         Queue<AbstractOrder> newOrders = new LinkedList<>();
         if(!orderMementoMap.isEmpty()){
-            for(Map.Entry<Integer, IMemento<AbstractOrder>> memento : orderMementoMap.entrySet()){
+            for(Map.Entry<Integer, OrderMemento> memento : orderMementoMap.entrySet()){
                 newOrders.add(memento.getValue().getStatus());
             }
             getControlMenu().setOrders(newOrders);
-            westernMenu.addCount();
         }else{
             orders.clear();
             tagLib.println("tErr15");
         }
+        westernMenu.addCount();
     }
 
 }

@@ -2,7 +2,6 @@ package ict.Command;
 
 import java.util.Queue;
 
-import ict.CareTaker;
 import ict.ControlMenu;
 import ict.Order.AbstractOrder;
 import ict.TagLib.TagLib;
@@ -11,13 +10,13 @@ public class CMDMarkAsDone implements ICommand {
     private Queue<AbstractOrder> orders;
     private Queue<AbstractOrder> doneOrders;
     private TagLib tagLib;
-    private CareTaker careTaker;
+    private ControlMenu controlMenu;
 
     public CMDMarkAsDone(ControlMenu controlMenu) {
         tagLib = controlMenu.getTagLib();
         doneOrders = controlMenu.getDoneOrders();
         orders = controlMenu.getOrders();
-        careTaker = controlMenu.getCareTaker();
+        this.controlMenu = controlMenu;
     }
 
     @Override
@@ -26,7 +25,7 @@ public class CMDMarkAsDone implements ICommand {
             tagLib.println("t601");
             System.out.println(orders.peek().toString());
             // remove from memento
-            careTaker.removeFromOrderMemento(orders.peek().getStaffNo());
+            controlMenu.removeFromOrderMemento(orders.peek().getStaffNo());
             doneOrders.add(orders.poll());
             tagLib.println("t602");
         } else {

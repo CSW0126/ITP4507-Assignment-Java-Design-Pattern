@@ -4,32 +4,31 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 
-import ict.CareTaker;
 import ict.ControlMenu;
-import ict.Memento.IMemento;
 import ict.Order.AbstractOrder;
+import ict.Order.AbstractOrder.OrderMemento;
 import ict.TagLib.TagLib;
 
 public class CMDCancelOrder implements ICommand {
     private TagLib tagLib;
-    private CareTaker careTaker;
     private Scanner sc;
     private Queue<AbstractOrder> orders;
-    private Map<Integer, IMemento<AbstractOrder>> orderMementoMap;
+    private Map<Integer, OrderMemento> orderMementoMap;
+    private ControlMenu controlMenu;
 
     public CMDCancelOrder(ControlMenu controlMenu) {
         tagLib = controlMenu.getTagLib();
-        careTaker = controlMenu.getCareTaker();
         sc = controlMenu.getScanner();
         orders = controlMenu.getOrders();
-        orderMementoMap = careTaker.getOrderMementoMap();
+        orderMementoMap = controlMenu.getOrderMementoMap();
+        this.controlMenu = controlMenu;
     }
 
     @Override
     public void execute() {
-        if(!orders.isEmpty()){
+        if (!orders.isEmpty()) {
             cancelOrder();
-        }else{
+        } else {
             tagLib.println("tErr16");
         }
 
@@ -50,13 +49,19 @@ public class CMDCancelOrder implements ICommand {
 
                 // check exist order
                 if (isExistOrder(staffNo)) {
-                    AbstractOrder removedOrder;
-                    removedOrder = careTaker.removeFromOrderMemento(staffNo);
-                    removedOrder.restore(orderMementoMap);
-                    System.out.println(removedOrder.toString());
-                    tagLib.println("t503");
+                    controlMenu.removeFromOrderMemento(staffNo);
+
+                    //search in queue
+                    for(AbstractOrder order : orders){
+                        if(order.getStaffNo() == staffNo){
+                            order.restore(orderMementoMap);
+                            System.out.println(order.toString());
+                            tagLib.println("t503");
+                            break;
+                        }
+                    }
                     break;
-                }else{
+                } else {
                     tagLib.println("tErr17");
                 }
 

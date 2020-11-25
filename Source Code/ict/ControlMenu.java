@@ -1,6 +1,8 @@
 package ict;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ import ict.Factory.CommandFactory;
 import ict.Factory.WesternSetFactory;
 import ict.FoodMenu.AbstractFoodMenu;
 import ict.Order.AbstractOrder;
+import ict.Order.AbstractOrder.OrderMemento;
 import ict.TagLib.TagLib;
 import ict.TagLib.Tag_Eng;
 
@@ -24,10 +27,11 @@ public class ControlMenu {
     private AbstractLunchSetFactory chineseFactory;
     private AbstractLunchSetFactory westernFactory;
     private AbstractCommandFactory commandFactory;
-    private CareTaker careTaker;
     private AbstractFoodMenu chineseMenu;
     private AbstractFoodMenu westernMenu;
     private ICommand command;
+    private Map<Integer, OrderMemento> orderMementoMap; 
+    
 
     public ControlMenu() {
         tagLib = new Tag_Eng();
@@ -37,7 +41,7 @@ public class ControlMenu {
         chineseFactory = new ChineseSetFactory(this);
         westernFactory = new WesternSetFactory(this);
         commandFactory = new CommandFactory(this);
-        careTaker = new CareTaker();
+        orderMementoMap = new LinkedHashMap<>();
         createDefaultMenu();
     }
 
@@ -127,14 +131,6 @@ public class ControlMenu {
         this.commandFactory = commandFactory;
     }
 
-    public CareTaker getCareTaker() {
-        return careTaker;
-    }
-
-    public void setCareTaker(CareTaker careTaker) {
-        this.careTaker = careTaker;
-    }
-
     public AbstractFoodMenu getChineseMenu() {
         return chineseMenu;
     }
@@ -159,5 +155,16 @@ public class ControlMenu {
         this.doneOrders = doneOrders;
     }
 
+    public Map<Integer, OrderMemento> getOrderMementoMap() {
+        return orderMementoMap;
+    }
     // End Getter, Setter//
+
+    public void addOrderMemento(OrderMemento orderMemento, int staffNo){
+        orderMementoMap.put(staffNo, orderMemento);
+    }
+
+    public void removeFromOrderMemento(int staffNo){
+        orderMementoMap.remove(staffNo);
+    }
 }

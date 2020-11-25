@@ -3,7 +3,6 @@ package ict.Command;
 import java.util.Queue;
 import java.util.Scanner;
 
-import ict.CareTaker;
 import ict.ControlMenu;
 import ict.Factory.AbstractLunchSetFactory;
 import ict.Factory.ChineseSetFactory;
@@ -14,6 +13,7 @@ import ict.Order.AbstractOrder;
 import ict.TagLib.TagLib;
 
 public class CMDPlaceOrder implements ICommand {
+    private ControlMenu controlMenu;
     private TagLib tagLib;
     private Scanner sc;
     private AbstractLunchSetFactory chineseSetFactory;
@@ -21,7 +21,6 @@ public class CMDPlaceOrder implements ICommand {
     private AbstractFoodMenu chineseMenu;
     private AbstractFoodMenu westernMenu;
     private Queue<AbstractOrder> orders;
-    private CareTaker careTaker;
 
     public CMDPlaceOrder(ControlMenu controlMenu) {
         this.tagLib = controlMenu.getTagLib();
@@ -34,8 +33,8 @@ public class CMDPlaceOrder implements ICommand {
         westernMenu = controlMenu.getWesternMenu();
         // orders
         orders = controlMenu.getOrders();
-        // caretaker
-        careTaker = controlMenu.getCareTaker();
+
+        this.controlMenu = controlMenu;
     }
 
     @Override
@@ -99,7 +98,7 @@ public class CMDPlaceOrder implements ICommand {
         // count -1
         order.getMenu().subtractCount();
 
-        careTaker.addOrderMemento(order.save());
+        controlMenu.addOrderMemento(order.save(),order.getStaffNo());
 
         tagLib.println("t306");
     }

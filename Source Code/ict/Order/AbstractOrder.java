@@ -7,7 +7,6 @@ import ict.Food.Drink.IDrink;
 import ict.Food.MainDish.IMainDish;
 import ict.Food.SideDish.ISideDish;
 import ict.FoodMenu.AbstractFoodMenu;
-import ict.Memento.IMemento;
 
 public abstract class AbstractOrder {
     private ControlMenu controlMenu;
@@ -75,7 +74,24 @@ public abstract class AbstractOrder {
     public abstract IMainDish getMainDish();
     public abstract AbstractFoodMenu getMenu();
     public abstract void setMenu(AbstractFoodMenu menu);
-    public abstract IMemento<AbstractOrder> save();
-    public abstract void restore(Map<Integer, IMemento<AbstractOrder>> orderMementoMap);
+    public abstract OrderMemento save();
+    public abstract void restore(Map<Integer, OrderMemento> orderMementoMap);
 
+    public static class OrderMemento{
+        private AbstractOrder order;
+    
+        protected OrderMemento(AbstractOrder order){
+            this.order = order;
+        } 
+    
+    
+        protected void setStatus(AbstractOrder order) {
+            this.order = order;
+        }
+    
+        protected AbstractOrder getStatus() {
+            return order;
+        }
+        
+    }
 }
